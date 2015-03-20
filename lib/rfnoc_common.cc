@@ -28,6 +28,19 @@
 #include <boost/assign.hpp>
 #include <boost/format.hpp>
 
+#ifdef GR_LOG_INFO
+#undef GR_LOG_INFO
+#define GR_LOG_INFO(a, b)
+#endif
+#ifdef GR_LOG_DEBUG
+#undef GR_LOG_DEBUG
+#define GR_LOG_DEBUG(a, b)
+#endif
+#ifdef GR_LOG_FATAL
+#undef GR_LOG_FATAL
+#define GR_LOG_FATAL(a, b)
+#endif
+
 using namespace gr::ettus::rfnoc;
 
 /****************************************************************************

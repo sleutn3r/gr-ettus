@@ -65,16 +65,6 @@
       boost::shared_ptr< ::uhd::rfnoc::block_ctrl_base > get_block_ctrl() const { return d_rfnoccer->get_block_ctrl(); }; \
       template <typename T> boost::shared_ptr<T> get_block_ctrl() const { return d_rfnoccer->get_block_ctrl<T>(); } \
       template <typename T> boost::shared_ptr<T> get_block_ctrl_throw() const { return d_rfnoccer->get_block_ctrl_throw<T>(); } \
-     private: \
-      rfnoc::rfnoc_common::sptr d_rfnoccer;
-
-// Have your ctor call this ctor macro:
-#define GR_RFNOC_BLOCK_SUPER_CTOR(name) \
-    gr::block(name, \
-          /* Default IO signatures: These will be overridden in the constructor */ \
-          gr::io_signature::make(0, 0, 1), \
-          gr::io_signature::make(0, 0, 1) \
-       )
 
 // Plonk this into your constructor:
 #define GR_RFNOC_BLOCK_INIT(dev, block_id, tx_stream_args, rx_stream_args) \

@@ -36,7 +36,7 @@ namespace gr {
     }
 
     rfnoc_vector_iir_cc_impl::rfnoc_vector_iir_cc_impl(int vlen, double alpha, double beta, const device3::sptr &dev, const int block_select, const int device_select)
-      : GR_RFNOC_BLOCK_SUPER_CTOR("rfnoc_vector_iir_cc")
+      : rfnoc_block("rfnoc_vector_iir_cc")
     {
       ::uhd::stream_args_t stream_args("fc32", "sc16");
       stream_args.args["vector_len"] = str(boost::format("%s") % vlen);

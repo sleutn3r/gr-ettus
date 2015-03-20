@@ -17,13 +17,12 @@
  * Boston, MA 02110-1301, USA.
  */
 
-
 #ifndef INCLUDED_ETTUS_RFNOC_WINDOW_CCI_H
 #define INCLUDED_ETTUS_RFNOC_WINDOW_CCI_H
 
 #include <ettus/api.h>
 #include <ettus/device3.h>
-#include <gnuradio/block.h>
+#include <ettus/rfnoc_block.h>
 
 namespace gr {
   namespace ettus {
@@ -33,7 +32,7 @@ namespace gr {
      * \ingroup ettus
      *
      */
-    class ETTUS_API rfnoc_window_cci : virtual public gr::block
+    class ETTUS_API rfnoc_window_cci : virtual public rfnoc_block
     {
      public:
       typedef boost::shared_ptr<rfnoc_window_cci> sptr;
@@ -56,4 +55,3 @@ namespace gr {
 } // namespace gr
 
 #endif /* INCLUDED_ETTUS_RFNOC_WINDOW_CCI_H */
-

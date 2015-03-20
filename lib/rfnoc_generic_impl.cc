@@ -49,7 +49,7 @@ namespace gr {
         const std::string &block_name,
         const int block_select,
         const int device_select
-    ) : GR_RFNOC_BLOCK_SUPER_CTOR(str(boost::format("uhd_rfnoc_%s") % block_name))
+    ) : rfnoc_block(str(boost::format("uhd_rfnoc_%s") % block_name))
     {
       GR_RFNOC_BLOCK_INIT(
           dev,

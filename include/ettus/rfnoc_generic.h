@@ -22,7 +22,7 @@
 
 #include <ettus/api.h>
 #include <ettus/device3.h>
-#include <gnuradio/block.h>
+#include <ettus/rfnoc_block.h>
 #include <uhd/stream.hpp>
 
 namespace gr {
@@ -48,7 +48,7 @@ namespace gr {
      * setter/getter methods need to be defined, a dedicated RFNoC block
      * class is recommended.
      */
-    class ETTUS_API rfnoc_generic : virtual public gr::block
+    class ETTUS_API rfnoc_generic : virtual public rfnoc_block
     {
      public:
       typedef boost::shared_ptr<rfnoc_generic> sptr;

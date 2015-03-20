@@ -46,7 +46,7 @@ namespace gr {
               const device3::sptr &dev,
               const int block_select,
               const int device_select
-    ) : GR_RFNOC_BLOCK_SUPER_CTOR("rfnoc_window_cci"),
+    ) : rfnoc_block("rfnoc_window_cci"),
       d_window_size(coeffs.size())
     {
       ::uhd::stream_args_t stream_args("fc32", "sc16");

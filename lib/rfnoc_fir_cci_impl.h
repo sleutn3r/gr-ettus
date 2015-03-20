@@ -22,11 +22,12 @@
 
 #include <ettus/rfnoc_fir_cci.h>
 #include <ettus/rfnoc_common.h>
+#include "rfnoc_block_impl.h"
 
 namespace gr {
   namespace ettus {
 
-    class rfnoc_fir_cci_impl : public rfnoc_fir_cci
+    class rfnoc_fir_cci_impl : public rfnoc_fir_cci, public rfnoc_block_impl
     {
      public:
       rfnoc_fir_cci_impl(

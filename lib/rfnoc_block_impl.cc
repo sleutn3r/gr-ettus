@@ -17,31 +17,26 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef INCLUDED_ETTUS_RFNOC_VECTOR_IIR_CC_IMPL_H
-#define INCLUDED_ETTUS_RFNOC_VECTOR_IIR_CC_IMPL_H
-
-#include <ettus/rfnoc_vector_iir_cc.h>
-#include <ettus/rfnoc_common.h>
 #include "rfnoc_block_impl.h"
 
-namespace gr {
-  namespace ettus {
+using namespace gr::ettus;
 
-    class rfnoc_vector_iir_cc_impl : public rfnoc_vector_iir_cc, public rfnoc_block_impl
+rfnoc_block::rfnoc_block(const std::string &name) :
+    gr::block(name,
+        /* Default IO signatures: These will be overridden later */
+        gr::io_signature::make(0, 0, 1),
+        gr::io_signature::make(0, 0, 1)
+    )
+{
+    // nop
+}
 
-    {
-     public:
-      rfnoc_vector_iir_cc_impl(int vlen, double alpha, double beta, const device3::sptr &dev, const int block_select, const int device_select);
-      ~rfnoc_vector_iir_cc_impl();
+rfnoc_block_impl::rfnoc_block_impl()
+{
+    // nop
+}
 
-      void set_vector_iir_alpha(const double alpha);
-      void set_vector_iir_beta(const double beta);
-
-      GR_RFNOC_BLOCK_IMPL_H()
-    };
-
-  } // namespace ettus
-} // namespace gr
-
-#endif /* INCLUDED_ETTUS_RFNOC_VECTOR_IIR_CC_IMPL_H */
-
+rfnoc_block_impl::~rfnoc_block_impl()
+{
+    // nop
+}

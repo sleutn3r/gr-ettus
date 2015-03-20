@@ -46,7 +46,7 @@ namespace gr {
         const ::uhd::stream_args_t &rx_stream_args,
         const int radio_select,
         const int device_select
-    ) : GR_RFNOC_BLOCK_SUPER_CTOR("rfnoc_radio")
+    ) : rfnoc_block("rfnoc_radio")
     {
       GR_RFNOC_BLOCK_INIT(
           dev, rfnoc::rfnoc_common::make_block_id("Radio", radio_select, device_select),
