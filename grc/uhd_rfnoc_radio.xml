@@ -430,11 +430,11 @@ self.$(id).set_rx_lo_source($lo_source1, "all", 1)
   </param>
 
   <param>
-    <name>Samples per Packet (0=auto)</name>
+    <name>Samples per Packet</name>
     <key>spp</key>
     <value>0</value>
     <type>int</type>
-    <hide>#if int($spp()) = 0 then 'part' else 'none'#</hide>
+    <hide>#if int($spp()) &lt; 1 then 'part' else 'none'#</hide>
     <tab>RFNoC Config</tab>
   </param>
 
@@ -474,4 +474,8 @@ self.$(id).set_rx_lo_source($lo_source1, "all", 1)
     <optional>1</optional>
     <hide>$direction.hide_source</hide>
   </source>
+
+  <doc>
+    Setting samples per packet to zero will automatically determine maximum size.
+  </doc>
 </block>
