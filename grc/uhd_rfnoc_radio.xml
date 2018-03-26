@@ -53,6 +53,8 @@ self.$(id).set_rx_lo_export_enabled(${lo_export1}, "all", 1)
 #end if
 
 self.$(id).set_clock_source(${source})
+self.$(id).set_arg("spp", $spp)
+self.$(id).set_arg("pkt_size", $spp*4) <!-- sc16, TODO make this dependent on the output type -->
 </make>
 <callback>self.$(id).set_rate($rate)</callback>
 <callback>self.$(id).set_bandwidth($rx_bandwidth)</callback>
@@ -84,6 +86,9 @@ self.$(id).set_rx_lo_source($lo_source1, "all", 1)
 </callback>
 
 <callback>self.$(id).set_clock_source(${source})</callback>
+
+<callback>set_arg("spp", $spp)</callback>
+<callback>set_arg("pkt_size", $spp*4)</callback> <!-- sc16 -->
 
   <param>
     <name>Radio Select</name>
@@ -421,6 +426,15 @@ self.$(id).set_rx_lo_source($lo_source1, "all", 1)
     <key>grvlen</key>
     <value>1</value>
     <type>int</type>
+    <tab>RFNoC Config</tab>
+  </param>
+
+  <param>
+    <name>Samples per Packet (0=auto)</name>
+    <key>spp</key>
+    <value>0</value>
+    <type>int</type>
+    <hide>#if int($spp()) = 0 then 'part' else 'none'#</hide>
     <tab>RFNoC Config</tab>
   </param>
 
