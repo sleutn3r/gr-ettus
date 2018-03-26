@@ -8,7 +8,7 @@
     uhd.stream_args( \# TX Stream Args
         cpu_format="fc32", \# TODO: This must be made an option
         otw_format="sc16",
-        args="pkt_size=$pkt_size",
+        args="",
     ),
     uhd.stream_args( \# RX Stream Args
         cpu_format="fc32", \# TODO: This must be made an option
@@ -21,7 +21,7 @@
   <param>
     <name>Packet Size</name>
     <key>pkt_size</key>
-    <value>256</value>
+    <value>4096</value>
     <type>int</type>
   </param>
 
@@ -51,15 +51,24 @@
     <tab>RFNoC Config</tab>
   </param>
 
- <sink>
+  <param>
+    <name>Force Vector Length</name>
+    <key>grvlen</key>
+    <value>1</value>
+    <type>int</type>
+  </param>
+
+  <sink>
     <name>in</name>
     <type>complex</type>
+    <vlen>$grvlen</vlen>
     <domain>rfnoc</domain>
   </sink>
 
   <source>
     <name>out</name>
     <type>complex</type>
+    <vlen>$grvlen</vlen>
     <domain>rfnoc</domain>
   </source>
 </block>
