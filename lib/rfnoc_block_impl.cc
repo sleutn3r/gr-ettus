@@ -562,7 +562,8 @@ rfnoc_block_impl::work_rx_a(
 
     case ::uhd::rx_metadata_t::ERROR_CODE_TIMEOUT:
       //its ok to timeout, perhaps the user is doing finite streaming
-      std::cout << "timeout on chan 0" << std::endl;
+      // std::cout << "timeout on chan 0" << std::endl;
+      std::cout << "T";
       break;
 
     case ::uhd::rx_metadata_t::ERROR_CODE_OVERFLOW:
