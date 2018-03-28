@@ -421,13 +421,13 @@ self.$(id).set_rx_lo_source($lo_source1, "all", 1)
     <tab>RFNoC Config</tab>
   </param>
 
-  <param>
+<!--   <param>
     <name>Force Vector Length</name>
     <key>grvlen</key>
     <value>1</value>
     <type>int</type>
     <tab>RFNoC Config</tab>
-  </param>
+  </param> -->
 
   <param>
     <name>Samples per Packet</name>
@@ -458,7 +458,7 @@ self.$(id).set_rx_lo_source($lo_source1, "all", 1)
   <sink>
     <name>in</name>
     <type>$cpu_format.type</type>
-    <vlen>$grvlen</vlen>
+    <vlen>#if int($spp()) &lt; 1 then 1 else $spp#</vlen>
     <domain>rfnoc</domain>
     <nports>$num_channels</nports>
     <optional>1</optional>
@@ -468,7 +468,7 @@ self.$(id).set_rx_lo_source($lo_source1, "all", 1)
   <source>
     <name>out</name>
     <type>$cpu_format.type</type>
-    <vlen>$grvlen</vlen>
+    <vlen>#if int($spp()) &lt; 1 then 1 else $spp#</vlen>
     <domain>rfnoc</domain>
     <nports>$num_channels</nports>
     <optional>1</optional>

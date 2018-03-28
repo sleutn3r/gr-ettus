@@ -16,7 +16,11 @@
         args="",
     ),
     "PacketResizer", $block_index, $device_index,
-)</make>
+)
+self.$(id).set_arg("pkt_size", $pkt_size)
+</make>
+
+  <callback>set_arg("pkt_size", $pkt_size)</callback>
 
   <param>
     <name>Packet Size</name>
@@ -24,7 +28,6 @@
     <value>6000</value>
     <type>int</type>
   </param>
-
 
   <param>
     <name>Host Data Type</name>
