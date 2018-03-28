@@ -54,7 +54,7 @@ self.$(id).set_rx_lo_export_enabled(${lo_export1}, "all", 1)
 
 self.$(id).set_clock_source(${source})
 self.$(id).set_arg("spp", $spp)
-self.$(id).set_arg("pkt_size", $spp*4) <!-- sc16, TODO make this dependent on the output type -->
+<!-- self.$(id).set_arg("pkt_size", $spp*4) --> <!-- sc16, TODO make this dependent on the output type -->
 </make>
 <callback>self.$(id).set_rate($rate)</callback>
 <callback>self.$(id).set_bandwidth($rx_bandwidth)</callback>
@@ -88,7 +88,7 @@ self.$(id).set_rx_lo_source($lo_source1, "all", 1)
 <callback>self.$(id).set_clock_source(${source})</callback>
 
 <callback>set_arg("spp", $spp)</callback>
-<callback>set_arg("pkt_size", $spp*4)</callback> <!-- sc16 -->
+<!-- <callback>set_arg("pkt_size", $spp*4)</callback> --> <!-- sc16 -->
 
   <param>
     <name>Radio Select</name>
