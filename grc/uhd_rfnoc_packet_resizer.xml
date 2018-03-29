@@ -6,26 +6,35 @@
   <make>ettus.rfnoc_generic(
     self.device3,
     uhd.stream_args( \# TX Stream Args
-        cpu_format="fc32", \# TODO: This must be made an option
-        otw_format="sc16",
-        args="",
+        cpu_format="$type", \# TODO: This must be made an option
+        otw_format="$otw",
+        args="{0}".format("" if $spp_out == 1 else "spp={0}".format($spp_out)),
     ),
     uhd.stream_args( \# RX Stream Args
-        cpu_format="fc32", \# TODO: This must be made an option
-        otw_format="sc16",
-        args="",
+        cpu_format="$type", \# TODO: This must be made an option
+        otw_format="$otw",
+        args="{0}".format("" if $spp_out == 1 else "spp={0}".format($spp_out)),
     ),
     "PacketResizer", $block_index, $device_index,
 )
-self.$(id).set_arg("pkt_size", $pkt_size)
+self.$(id).set_arg("spp_in", $spp_in)
+self.$(id).set_arg("spp_out", $spp_out)
 </make>
 
-  <callback>set_arg("pkt_size", $pkt_size)</callback>
+  <callback>set_arg("spp_in", $spp_in)</callback>
+  <callback>set_arg("spp_out", $spp_out)</callback>
 
   <param>
-    <name>Packet Size</name>
-    <key>pkt_size</key>
-    <value>6000</value>
+    <name>spp in</name>
+    <key>spp_in</key>
+    <value>64</value>
+    <type>int</type>
+  </param>
+
+  <param>
+    <name>spp out</name>
+    <key>spp_out</key>
+    <value>1024</value>
     <type>int</type>
   </param>
 
@@ -100,24 +109,24 @@ self.$(id).set_arg("pkt_size", $pkt_size)
     <tab>RFNoC Config</tab>
   </param>
 
-  <param>
+<!--   <param>
     <name>Force Vector Length</name>
     <key>grvlen</key>
     <value>1</value>
     <type>int</type>
-  </param>
+  </param> -->
 
   <sink>
     <name>in</name>
     <type>$type.type</type>
-    <vlen>$grvlen</vlen>
+    <vlen>$spp_in</vlen>
     <domain>rfnoc</domain>
   </sink>
 
   <source>
     <name>out</name>
     <type>$type.type</type>
-    <vlen>$grvlen</vlen>
+    <vlen>$spp_out</vlen>
     <domain>rfnoc</domain>
   </source>
 </block>

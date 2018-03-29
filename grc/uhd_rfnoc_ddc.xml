@@ -107,12 +107,38 @@ for chan in xrange($num_chans):
     <type>int</type>
   </param>
 
+  <param>
+    <name>Host Data Type</name>
+    <key>type</key>
+    <type>enum</type>
+    <option>
+      <name>Complex float32</name>
+      <key>fc32</key>
+      <opt>type:complex</opt>
+    </option>
+    <option>
+      <name>Complex int16</name>
+      <key>sc16</key>
+      <opt>type:sc16</opt>
+    </option>
+    <option>
+      <name>Byte</name>
+      <key>u8</key>
+      <opt>type:byte</opt>
+    </option>
+    <option>
+      <name>VITA word32</name>
+      <key>item32</key>
+      <opt>type:s32</opt>
+    </option>
+  </param>
+
   <check>$output_rate &lt;= $input_rate</check>
   <check>$output_rate &gt;= $input_rate/1024</check>
 
   <sink>
     <name>in</name>
-    <type>complex</type>
+    <type>$type.type</type>
     <vlen>$grvlen</vlen>
     <domain>rfnoc</domain>
     <nports>$num_chans</nports>
@@ -120,7 +146,7 @@ for chan in xrange($num_chans):
 
   <source>
     <name>out</name>
-    <type>complex</type>
+    <type>$type.type</type>
     <vlen>$grvlen</vlen>
     <domain>rfnoc</domain>
     <nports>$num_chans</nports>
