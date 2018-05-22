@@ -92,6 +92,7 @@ namespace gr {
       uhd::time_spec_t get_time_now(void);
       uhd::time_spec_t get_time_last_pps(void);
       void set_time_next_pps(const uhd::time_spec_t &spec);
+      void set_time_now(const uhd::time_spec_t &spec);
 
       uhd::time_spec_t get_command_time(const size_t chan);
       void set_command_time(const uhd::time_spec_t &time, const size_t chan);

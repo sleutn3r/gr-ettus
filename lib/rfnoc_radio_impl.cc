@@ -241,6 +241,11 @@ namespace gr {
       _radio_ctrl->set_time_next_pps(spec);
     }
 
+    void rfnoc_radio_impl::set_time_now(const uhd::time_spec_t &spec)
+    {
+      _radio_ctrl->set_time_now(spec);
+    }
+
     uhd::time_spec_t rfnoc_radio_impl::get_time_now(void)
     {
       return _radio_ctrl->get_time_now();
